@@ -1,0 +1,1025 @@
+<title>Krishna Caters | Premium Catering in Kozhikode, Kerala</title>
+<style>
+:root {
+  --night: #0D0A07;
+  --night-2: #171009;
+  --night-3: #201508;
+  --saffron: #E8943A;
+  --saffron-lt: #F0AC5E;
+  --crimson: #8B1A2A;
+  --cream: #F5EDD8;
+  --cream-dim: #A89878;
+  --gold: #C4973F;
+  --gold-dim: #7A5E25;
+  --font-d: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  --font-b: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --section-pad: clamp(4rem, 8vw, 8rem);
+  --wrap: min(1180px, 90vw);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { background: var(--night); color: var(--cream); font-family: var(--font-b); line-height: 1.6; overflow-x: hidden; }
+a { color: inherit; }
+img, canvas { max-width: 100%; display: block; }
+
+/* NAV */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  padding: 1.5rem 0;
+  transition: background 0.4s, padding 0.4s, border-color 0.4s;
+  border-bottom: 1px solid transparent;
+}
+#nav.scrolled {
+  background: rgba(13,10,7,0.96);
+  backdrop-filter: blur(14px);
+  padding: 0.9rem 0;
+  border-bottom-color: rgba(196,151,63,0.18);
+}
+.nav-wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo { text-decoration: none; line-height: 1.1; }
+.nav-logo b {
+  display: block;
+  font-family: var(--font-d);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: 0.03em;
+}
+.nav-logo small {
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--saffron);
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--saffron); }
+.nav-cta {
+  background: var(--saffron) !important;
+  color: var(--night) !important;
+  padding: 0.5rem 1.2rem;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+}
+.nav-cta:hover { background: var(--saffron-lt) !important; }
+.nav-ham { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.nav-ham span { display: block; width: 22px; height: 2px; background: var(--cream); transition: all 0.3s; }
+
+/* HERO */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+#hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-veil {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(13,10,7,0.25) 0%, rgba(13,10,7,0.55) 55%, rgba(13,10,7,0.92) 100%);
+}
+.hero-body { position: relative; z-index: 2; text-align: center; max-width: 860px; padding: 0 2rem; }
+.hero-eyebrow {
+  font-size: 0.65rem; letter-spacing: 0.45em; text-transform: uppercase;
+  color: var(--saffron); margin-bottom: 1.5rem;
+  opacity: 0; transform: translateY(16px);
+  animation: up 0.8s var(--ease) 0.4s forwards;
+}
+.hero-h1 {
+  font-family: var(--font-d);
+  font-size: clamp(2.8rem, 7vw, 6rem);
+  font-weight: 700; line-height: 1.06;
+  color: var(--cream); text-wrap: balance;
+  margin-bottom: 1.5rem;
+  opacity: 0; transform: translateY(24px);
+  animation: up 1s var(--ease) 0.6s forwards;
+}
+.hero-h1 em { font-style: italic; color: var(--saffron); }
+.hero-sub {
+  font-size: 1.05rem; color: var(--cream-dim); line-height: 1.75;
+  max-width: 540px; margin: 0 auto 2.75rem;
+  opacity: 0; transform: translateY(16px);
+  animation: up 0.9s var(--ease) 0.8s forwards;
+}
+.hero-btns {
+  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  opacity: 0; transform: translateY(16px);
+  animation: up 0.9s var(--ease) 1s forwards;
+}
+.hero-scroll {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  opacity: 0; animation: up 1s var(--ease) 1.5s forwards;
+}
+.hero-scroll span { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream-dim); }
+.scroll-bar { width: 1px; height: 44px; background: linear-gradient(to bottom, var(--saffron), transparent); animation: pulse 2s infinite; }
+
+/* BUTTONS */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  padding: 0.875rem 2rem; border-radius: 1px;
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; text-decoration: none;
+  transition: all 0.25s; border: none; cursor: pointer;
+}
+.btn-call { background: var(--saffron); color: var(--night); }
+.btn-call:hover { background: var(--saffron-lt); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,148,58,0.3); }
+.btn-wa { background: #25D366; color: #fff; }
+.btn-wa:hover { background: #20bd5a; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.3); }
+.btn-ghost { background: transparent; color: var(--cream); border: 1px solid rgba(245,237,216,0.25); }
+.btn-ghost:hover { border-color: var(--saffron); color: var(--saffron); transform: translateY(-2px); }
+.btn-lg { padding: 1.1rem 2.5rem; font-size: 0.875rem; }
+
+/* SECTION COMMONS */
+.section { padding: var(--section-pad) 0; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 2rem; }
+.eyebrow { font-size: 0.62rem; letter-spacing: 0.38em; text-transform: uppercase; color: var(--saffron); margin-bottom: 0.75rem; }
+.gold-line { width: 44px; height: 2px; background: var(--gold); margin-bottom: 1.5rem; }
+.sec-title {
+  font-family: var(--font-d);
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-weight: 700; line-height: 1.12;
+  color: var(--cream); text-wrap: balance;
+  margin-bottom: 1.25rem;
+}
+.sec-sub { color: var(--cream-dim); font-size: 1rem; line-height: 1.75; max-width: 540px; margin-bottom: 3rem; }
+
+/* REVEAL */
+.rv { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.rv.in { opacity: 1; transform: none; }
+.d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; }
+.d3 { transition-delay: 0.3s; } .d4 { transition-delay: 0.4s; }
+
+/* ABOUT */
+#about { background: var(--night-2); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.about-vis { position: relative; height: 480px; }
+.about-img-a {
+  position: absolute; top: 0; left: 0;
+  width: 75%; height: 82%;
+  background: var(--night-3); overflow: hidden;
+  border: 1px solid rgba(196,151,63,0.12);
+}
+.about-img-b {
+  position: absolute; bottom: 0; right: 0;
+  width: 50%; height: 54%;
+  background: var(--night-3); overflow: hidden;
+  border: 1px solid rgba(196,151,63,0.25);
+}
+.about-img-a canvas, .about-img-b canvas { width: 100%; height: 100%; }
+.about-badge {
+  position: absolute; bottom: 2.5rem; left: 47%;
+  background: var(--saffron); color: var(--night);
+  padding: 1rem 1.5rem; text-align: center; z-index: 2; white-space: nowrap;
+}
+.about-badge strong { display: block; font-family: var(--font-d); font-size: 2.2rem; line-height: 1; }
+.about-badge small { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
+.about-checks { display: grid; grid-template-columns: 1fr 1fr; gap: 0.875rem; margin-top: 2rem; }
+.chk { display: flex; gap: 0.75rem; align-items: flex-start; }
+.chk-dot { width: 5px; height: 5px; background: var(--saffron); border-radius: 50%; margin-top: 0.6rem; flex-shrink: 0; }
+.chk p { font-size: 0.85rem; color: var(--cream-dim); line-height: 1.5; }
+
+/* SERVICES */
+#services { background: var(--night); }
+.svc-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: rgba(196,151,63,0.12);
+  border: 1px solid rgba(196,151,63,0.12);
+}
+.svc-card { background: var(--night); padding: 2.5rem 2rem; transition: background 0.3s; }
+.svc-card:hover { background: var(--night-2); }
+.svc-icon { width: 44px; height: 44px; margin-bottom: 1.5rem; }
+.svc-card h3 { font-family: var(--font-d); font-size: 1.2rem; color: var(--cream); margin-bottom: 0.75rem; }
+.svc-card p { font-size: 0.875rem; color: var(--cream-dim); line-height: 1.65; }
+.svc-tag {
+  display: inline-block; margin-top: 1.25rem;
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--saffron); border-bottom: 1px solid var(--saffron); padding-bottom: 2px;
+}
+
+/* MENU */
+#menu { background: var(--night-2); }
+.menu-tabs {
+  display: flex; border-bottom: 1px solid rgba(196,151,63,0.18);
+  overflow-x: auto; scrollbar-width: none; margin-bottom: 2.5rem;
+}
+.menu-tabs::-webkit-scrollbar { display: none; }
+.m-tab {
+  padding: 0.875rem 1.5rem; font-size: 0.72rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--cream-dim);
+  background: none; border: none; cursor: pointer; white-space: nowrap;
+  border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.2s;
+}
+.m-tab.on { color: var(--saffron); border-bottom-color: var(--saffron); }
+.m-tab:hover:not(.on) { color: var(--cream); }
+.m-panel { display: none; }
+.m-panel.on {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(270px,1fr));
+  gap: 1px; background: rgba(196,151,63,0.08);
+  animation: fadeIn 0.35s ease;
+}
+.m-item { background: var(--night-2); padding: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; transition: background 0.2s; }
+.m-item:hover { background: var(--night-3); }
+.m-item h4 { font-size: 0.9rem; color: var(--cream); font-weight: 500; margin-bottom: 0.25rem; }
+.m-item p { font-size: 0.775rem; color: var(--cream-dim); }
+.tag {
+  font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.2rem 0.55rem; border-radius: 1px; white-space: nowrap; flex-shrink: 0;
+}
+.tag-v { background: rgba(34,139,34,0.12); color: #6ac96a; border: 1px solid rgba(34,139,34,0.25); }
+.tag-nv { background: rgba(139,26,42,0.15); color: #e87070; border: 1px solid rgba(139,26,42,0.3); }
+
+/* STATS */
+#stats {
+  background: var(--night-3);
+  border-top: 1px solid rgba(196,151,63,0.14);
+  border-bottom: 1px solid rgba(196,151,63,0.14);
+}
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); }
+.stat {
+  padding: 3rem 2rem; text-align: center;
+  border-right: 1px solid rgba(196,151,63,0.14);
+}
+.stat:last-child { border-right: none; }
+.stat-n {
+  font-family: var(--font-d); font-size: 3.25rem; font-weight: 700;
+  color: var(--saffron); line-height: 1; margin-bottom: 0.5rem;
+  font-variant-numeric: tabular-nums;
+}
+.stat-l { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream-dim); }
+
+/* GALLERY */
+#gallery { background: var(--night); }
+.gal-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 200px;
+  gap: 3px;
+}
+.gal-item { position: relative; overflow: hidden; cursor: pointer; }
+.gal-item:nth-child(1) { grid-column: span 5; grid-row: span 2; }
+.gal-item:nth-child(2) { grid-column: span 4; }
+.gal-item:nth-child(3) { grid-column: span 3; }
+.gal-item:nth-child(4) { grid-column: span 4; }
+.gal-item:nth-child(5) { grid-column: span 3; }
+.gal-item:nth-child(6) { grid-column: span 5; }
+.gal-item:nth-child(7) { grid-column: span 4; }
+.gal-item:nth-child(8) { grid-column: span 3; }
+.gal-item canvas { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
+.gal-item:hover canvas { transform: scale(1.06); }
+.gal-cap {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(13,10,7,0.85) 0%, transparent 55%);
+  display: flex; align-items: flex-end; padding: 1rem 1.25rem;
+  opacity: 0; transition: opacity 0.3s;
+}
+.gal-item:hover .gal-cap { opacity: 1; }
+.gal-cap span { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); border-bottom: 1px solid var(--saffron); padding-bottom: 2px; }
+
+/* LOCATION */
+#location { background: var(--night-2); }
+.loc-grid { display: grid; grid-template-columns: 1fr 1.55fr; gap: 4.5rem; align-items: start; }
+.loc-detail { display: flex; gap: 1rem; margin-bottom: 1.75rem; align-items: flex-start; }
+.loc-icon {
+  width: 38px; height: 38px; flex-shrink: 0;
+  background: rgba(232,148,58,0.08);
+  border: 1px solid rgba(232,148,58,0.18);
+  display: flex; align-items: center; justify-content: center;
+}
+.loc-icon svg { width: 16px; height: 16px; stroke: var(--saffron); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.loc-detail strong { display: block; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--saffron); margin-bottom: 0.3rem; }
+.loc-detail p { font-size: 0.875rem; color: var(--cream-dim); line-height: 1.6; }
+.loc-detail a { color: var(--saffron); text-decoration: none; }
+.map-wrap {
+  height: 440px; overflow: hidden;
+  border: 1px solid rgba(196,151,63,0.2);
+  position: relative;
+}
+.map-wrap iframe { width: 100%; height: 100%; border: none; filter: invert(88%) hue-rotate(180deg) saturate(0.9); }
+.map-badge {
+  position: absolute; top: 1rem; left: 1rem;
+  background: rgba(13,10,7,0.92); border: 1px solid rgba(196,151,63,0.3);
+  padding: 0.4rem 0.875rem;
+  font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--saffron); pointer-events: none; z-index: 1;
+}
+
+/* CTA */
+#cta {
+  position: relative; text-align: center;
+  padding: clamp(5rem, 10vw, 10rem) 0;
+  overflow: hidden;
+  background: var(--night-3);
+}
+#cta-canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.08; }
+.cta-inner { position: relative; z-index: 1; }
+.cta-title {
+  font-family: var(--font-d);
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  font-weight: 700; line-height: 1.1; color: var(--cream);
+  text-wrap: balance; margin-bottom: 1.25rem;
+}
+.cta-title em { font-style: italic; color: var(--saffron); }
+.cta-sub { color: var(--cream-dim); font-size: 1rem; margin-bottom: 3rem; max-width: 460px; margin-left: auto; margin-right: auto; }
+.cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* FOOTER */
+footer {
+  background: #060402;
+  border-top: 1px solid rgba(196,151,63,0.14);
+  padding: 3rem 0;
+}
+.foot-inner {
+  max-width: var(--wrap); margin: 0 auto; padding: 0 2rem;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;
+}
+.foot-brand { font-family: var(--font-d); font-size: 1.2rem; color: var(--cream); }
+.foot-brand small { display: block; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--saffron); margin-top: 0.2rem; font-family: var(--font-b); }
+.foot-links { display: flex; gap: 1.75rem; flex-wrap: wrap; }
+.foot-links a { font-size: 0.72rem; color: var(--cream-dim); text-decoration: none; letter-spacing: 0.1em; transition: color 0.2s; }
+.foot-links a:hover { color: var(--saffron); }
+.foot-copy { font-size: 0.7rem; color: var(--cream-dim); opacity: 0.45; }
+
+/* FLOAT */
+.floats { position: fixed; bottom: 1.75rem; right: 1.75rem; display: flex; flex-direction: column; gap: 0.75rem; z-index: 800; }
+.fl {
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; box-shadow: 0 4px 20px rgba(0,0,0,0.45);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s;
+  position: relative;
+}
+.fl:hover { transform: scale(1.12) translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.5); }
+.fl svg { width: 24px; height: 24px; fill: white; }
+.fl-wa { background: #25D366; }
+.fl-call { background: var(--saffron); }
+.fl-tip {
+  position: absolute; right: calc(100% + 10px); top: 50%; transform: translateY(-50%);
+  background: rgba(13,10,7,0.92); border: 1px solid rgba(196,151,63,0.2);
+  padding: 0.3rem 0.7rem; font-size: 0.68rem; letter-spacing: 0.1em;
+  color: var(--cream); white-space: nowrap; opacity: 0; pointer-events: none;
+  transition: opacity 0.2s;
+}
+.fl:hover .fl-tip { opacity: 1; }
+
+/* KEYFRAMES */
+@keyframes up { to { opacity: 1; transform: none; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-vis { height: 320px; }
+  .svc-grid { grid-template-columns: 1fr 1fr; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .stat:nth-child(2) { border-right: none; }
+  .stat:nth-child(3) { border-top: 1px solid rgba(196,151,63,0.14); }
+  .stat:nth-child(4) { border-top: 1px solid rgba(196,151,63,0.14); border-right: none; }
+  .loc-grid { grid-template-columns: 1fr; }
+  .gal-grid { grid-template-columns: repeat(6,1fr); }
+  .gal-item:nth-child(1) { grid-column: span 6; grid-row: span 1; }
+  .gal-item:nth-child(2) { grid-column: span 3; }
+  .gal-item:nth-child(3) { grid-column: span 3; }
+  .gal-item:nth-child(4) { grid-column: span 2; }
+  .gal-item:nth-child(5) { grid-column: span 2; }
+  .gal-item:nth-child(6) { grid-column: span 2; }
+  .gal-item:nth-child(7) { grid-column: span 3; }
+  .gal-item:nth-child(8) { grid-column: span 3; }
+}
+@media (max-width: 600px) {
+  .nav-links { display: none; flex-direction: column; position: fixed; top: 60px; left: 0; right: 0; background: rgba(13,10,7,0.98); padding: 2rem; gap: 1.5rem; z-index: 899; }
+  .nav-links.open { display: flex; }
+  .nav-ham { display: flex; }
+  .svc-grid { grid-template-columns: 1fr; }
+  .about-checks { grid-template-columns: 1fr; }
+  .foot-inner { flex-direction: column; text-align: center; }
+  .foot-links { justify-content: center; }
+  .gal-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
+  .gal-item { grid-column: span 1 !important; grid-row: span 1 !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-wrap">
+    <a href="#hero" class="nav-logo">
+      <b>Krishna Caters</b>
+      <small>Kozhikode · Kerala</small>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="tel:+919876543210" class="nav-cta">Call Now</a></li>
+    </ul>
+    <button class="nav-ham" id="nav-ham" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-veil"></div>
+  <div class="hero-body">
+    <p class="hero-eyebrow">Est. 2008 &nbsp;·&nbsp; Kozhikode, Kerala</p>
+    <h1 class="hero-h1">Flavors Born in <em>Malabar</em>,<br>Served at Your Table</h1>
+    <p class="hero-sub">Authentic Kozhikode cuisine crafted for weddings, celebrations, and corporate gatherings — every meal, a memory worth keeping.</p>
+    <div class="hero-btns">
+      <a href="tel:+919876543210" class="btn btn-call">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Call Now
+      </a>
+      <a href="https://wa.me/919876543210?text=Hi%20Krishna%20Caters%2C%20I%20would%20like%20to%20enquire%20about%20catering%20for%20my%20event." class="btn btn-wa" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Enquiry
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-bar"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-vis rv">
+        <div class="about-img-a"><canvas id="cv-sadya"></canvas></div>
+        <div class="about-img-b"><canvas id="cv-biryani"></canvas></div>
+        <div class="about-badge">
+          <strong>15+</strong>
+          <small>Years of Excellence</small>
+        </div>
+      </div>
+      <div class="rv d2">
+        <p class="eyebrow">Our Story</p>
+        <div class="gold-line"></div>
+        <h2 class="sec-title">Where Tradition Meets Every Table</h2>
+        <p style="color:var(--cream-dim);line-height:1.8;margin-bottom:1rem;">
+          Rooted in the rich culinary heritage of Kozhikode, Krishna Caters has been bringing the soul of Malabar cuisine to your celebrations since 2008. From the fragrant depths of our legendary Kozhikode Biryani to the divine spread of a traditional Sadya on banana leaf — every dish carries the care of a home kitchen at the scale of a grand feast.
+        </p>
+        <p style="color:var(--cream-dim);line-height:1.8;margin-bottom:2rem;">
+          Our team of seasoned chefs and service professionals have served over 5,000 events across Kozhikode, Malappuram, Wayanad, and beyond — from intimate gatherings of 50 to grand weddings of 5,000 guests.
+        </p>
+        <div class="about-checks">
+          <div class="chk"><div class="chk-dot"></div><p>FSSAI certified with highest hygiene standards</p></div>
+          <div class="chk"><div class="chk-dot"></div><p>Fresh ingredients sourced daily from local markets</p></div>
+          <div class="chk"><div class="chk-dot"></div><p>Chefs trained in authentic Malabar recipes</p></div>
+          <div class="chk"><div class="chk-dot"></div><p>Full event setup — tables, chairs & serving staff</p></div>
+          <div class="chk"><div class="chk-dot"></div><p>On-site cooking for freshest experience</p></div>
+          <div class="chk"><div class="chk-dot"></div><p>Serving 50 to 5,000+ guests per event</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="wrap">
+    <div style="max-width:580px;margin-bottom:3rem;">
+      <p class="eyebrow rv">What We Offer</p>
+      <div class="gold-line rv d1"></div>
+      <h2 class="sec-title rv d2">Catering for Every Occasion</h2>
+      <p class="sec-sub rv d3">From intimate celebrations to grand weddings, we bring Malabar's finest cuisine to your guests with professional service and flawless execution.</p>
+    </div>
+    <div class="svc-grid rv">
+      <div class="svc-card">
+        <svg class="svc-icon" viewBox="0 0 44 44" fill="none" stroke="#E8943A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 8c-5 0-9 4-9 9 0 6 9 18 9 18s9-12 9-18c0-5-4-9-9-9z"/><circle cx="22" cy="17" r="3"/>
+        </svg>
+        <h3>Wedding Feasts</h3>
+        <p>Grand multi-cuisine spreads for your most special day. Full setup, service staff, and live Biryani & Parotta counters for 200–5,000+ guests.</p>
+        <span class="svc-tag">Most Popular</span>
+      </div>
+      <div class="svc-card">
+        <svg class="svc-icon" viewBox="0 0 44 44" fill="none" stroke="#E8943A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="6" y="18" width="32" height="18" rx="2"/><path d="M14 18v-5a8 8 0 0116 0v5"/><circle cx="22" cy="27" r="2.5" fill="#E8943A"/>
+        </svg>
+        <h3>Traditional Sadya</h3>
+        <p>Authentic Kerala Sadya served on banana leaves — 28+ dishes including Avial, Thoran, Olan, and multiple Payasams. Perfect for Onam and Vishu.</p>
+        <span class="svc-tag">Heritage Special</span>
+      </div>
+      <div class="svc-card">
+        <svg class="svc-icon" viewBox="0 0 44 44" fill="none" stroke="#E8943A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="8" y="10" width="28" height="24" rx="3"/><path d="M15 22h14M22 15v14"/>
+        </svg>
+        <h3>Corporate Events</h3>
+        <p>Professional catering for conferences, office celebrations, product launches. Customized menus for all dietary preferences, served on time.</p>
+        <span class="svc-tag">Business Ready</span>
+      </div>
+      <div class="svc-card">
+        <svg class="svc-icon" viewBox="0 0 44 44" fill="none" stroke="#E8943A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="22" cy="18" r="9"/><path d="M13 38c0-4.97 4.03-9 9-9s9 4.03 9 9"/>
+        </svg>
+        <h3>Birthdays & Parties</h3>
+        <p>Flavorful spreads for birthdays, anniversaries, baby showers, and house warmings. Live snack counters and dessert stations included.</p>
+        <span class="svc-tag">Celebrations</span>
+      </div>
+      <div class="svc-card">
+        <svg class="svc-icon" viewBox="0 0 44 44" fill="none" stroke="#E8943A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 36V22l11-10 11 10v14"/><rect x="17" y="26" width="10" height="10"/>
+        </svg>
+        <h3>Festival Catering</h3>
+        <p>Special menus for Eid, Onam, Vishu, Christmas & Ramadan. Traditional recipes prepared the authentic Malabar way for community gatherings.</p>
+        <span class="svc-tag">Seasonal</span>
+      </div>
+      <div class="svc-card">
+        <svg class="svc-icon" viewBox="0 0 44 44" fill="none" stroke="#E8943A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="22" cy="22" r="14"/><path d="M22 14v8l5 3"/>
+        </svg>
+        <h3>Bulk Tiffin Service</h3>
+        <p>Daily or weekly meal delivery for offices, construction sites, and hostels. Nutritious, home-style Kerala meals delivered on time, every day.</p>
+        <span class="svc-tag">Daily Service</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="section">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem;margin-bottom:3rem;">
+      <div>
+        <p class="eyebrow rv">Our Menu</p>
+        <div class="gold-line rv d1"></div>
+        <h2 class="sec-title rv d2">The Malabar Table</h2>
+      </div>
+      <a href="https://wa.me/919876543210?text=Hi%2C%20I%27d%20like%20to%20get%20the%20full%20menu%20and%20pricing%20details." class="btn btn-ghost rv d2" target="_blank">Full Menu &amp; Pricing →</a>
+    </div>
+    <div class="menu-tabs" role="tablist">
+      <button class="m-tab on" data-tab="biryani">Biryani &amp; Rice</button>
+      <button class="m-tab" data-tab="breakfast">Breakfast</button>
+      <button class="m-tab" data-tab="sadya">Sadya</button>
+      <button class="m-tab" data-tab="main">Main Course</button>
+      <button class="m-tab" data-tab="breads">Breads</button>
+      <button class="m-tab" data-tab="snacks">Snacks</button>
+      <button class="m-tab" data-tab="sweets">Sweets</button>
+    </div>
+    <!-- Biryani -->
+    <div class="m-panel on" id="tab-biryani">
+      <div class="m-item"><div><h4>Kozhikode Chicken Biryani</h4><p>Signature Malabar-style with fried onions &amp; ghee rice</p></div><span class="tag tag-nv">Non-Veg</span></div>
+      <div class="m-item"><div><h4>Malabar Mutton Biryani</h4><p>Slow-cooked with whole spices, saffron &amp; caramelized onions</p></div><span class="tag tag-nv">Non-Veg</span></div>
+      <div class="m-item"><div><h4>Thalassery Fish Biryani</h4><p>Coastal-style with king fish, tomatoes &amp; green herbs</p></div><span class="tag tag-nv">Non-Veg</span></div>
+      <div class="m-item"><div><h4>Prawn Biryani</h4><p>Tiger prawns in aromatic Malabar masala with kaima rice</p></div><span class="tag tag-nv">Non-Veg</span></div>
+      <div class="m-item"><div><h4>Veg Dum Biryani</h4><p>Mixed vegetables, paneer &amp; nuts in fragrant dum-cooked rice</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Kerala Ghee Rice</h4><p>Fragrant kaima rice with cashews, raisins &amp; fried onions</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Pathiri &amp; Chicken Curry</h4><p>Paper-thin rice pancakes with rich Malabar chicken gravy</p></div><span class="tag tag-nv">Non-Veg</span></div>
+      <div class="m-item"><div><h4>Egg Biryani</h4><p>Masala-fried eggs layered with spiced basmati rice</p></div><span class="tag tag-nv">Non-Veg</span></div>
+    </div>
+    <!-- Breakfast -->
+    <div class="m-panel" id="tab-breakfast">
+      <div class="m-item"><div><h4>Puttu &amp; Kadala Curry</h4><p>Steamed rice cylinders with spiced black chickpea curry</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Appam &amp; Veg Stew</h4><p>Lacy Kerala appam with coconut milk vegetable stew</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Idiyappam &amp; Egg Curry</h4><p>String hoppers with spiced egg masala curry</p></div><span class="tag tag-nv">Non-Veg</span></div>
+      <div class="m-item"><div><h4>Appam &amp; Chicken Stew</h4><p>Soft appam with tender chicken in coconut milk gravy</p></div><span class="tag tag-nv">Non-Veg</span></div>
+      <div class="m-item"><div><h4>Malabar Parotta &amp; Beef Fry</h4><p>Flaky layered parotta with spiced Kerala beef ularthu</p></div><span class="tag tag-nv">Non-Veg</span></div>
+      <div class="m-item"><div><h4>Dosa &amp; Sambar</h4><p>Crispy rice dosa with mixed vegetable sambar &amp; chutneys</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Vellayappam &amp; Fish Curry</h4><p>Soft rice hoppers with tangy Malabar fish curry</p></div><span class="tag tag-nv">Non-Veg</span></div>
+      <div class="m-item"><div><h4>Poori &amp; Chana Masala</h4><p>Fluffy wheat poori with spiced chickpea curry</p></div><span class="tag tag-v">Veg</span></div>
+    </div>
+    <!-- Sadya -->
+    <div class="m-panel" id="tab-sadya">
+      <div class="m-item"><div><h4>Kerala Boiled Rice</h4><p>Traditional red rice served on fresh banana leaf</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Parippu &amp; Ghee</h4><p>Moong dal with pure cow ghee — the first course of Sadya</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Avial</h4><p>Mixed vegetables in coconut &amp; yogurt with curry leaves</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Thoran (4 varieties)</h4><p>Stir-fried vegetables with coconut — beans, cabbage, carrot, beetroot</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Sambar &amp; Rasam</h4><p>Vegetable lentil sambar and peppery tomato rasam</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Olan &amp; Kaalan</h4><p>Ash gourd in coconut milk &amp; yam in spiced yogurt curry</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Ada Pradhaman</h4><p>Rice flakes in jaggery &amp; coconut milk — king of Payasams</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Palada Payasam</h4><p>Milk-based rice ada dessert with cardamom &amp; cashews</p></div><span class="tag tag-v">Veg</span></div>
+    </div>
+    <!-- Main -->
+    <div class="m-panel" id="tab-main">
+      <div class="m-item"><div><h4>Malabar Fish Curry</h4><p>King fish in tamarind-coconut Malabar masala</p></div><span class="tag tag-nv">Non-Veg</span></div>
+      <div class="m-item"><div><h4>Chicken Mappas</h4><p>Tender chicken in rich coconut milk and whole spices</p></div><span class="tag tag-nv">Non-Veg</span></div>
+      <div class="m-item"><div><h4>Mutton Ishtu</h4><p>Kerala-style mutton stew with potatoes in coconut milk</p></div><span class="tag tag-nv">Non-Veg</span></div>
+      <div class="m-item"><div><h4>Prawn Masala</h4><p>Juicy prawns in coastal Kerala tomato-coconut masala</p></div><span class="tag tag-nv">Non-Veg</span></div>
+      <div class="m-item"><div><h4>Beef Ularthu</h4><p>Classic Kerala dry beef fry with coconut pieces &amp; spices</p></div><span class="tag tag-nv">Non-Veg</span></div>
+      <div class="m-item"><div><h4>Paneer Butter Masala</h4><p>Creamy tomato-based paneer curry with fresh cream</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Dal Makhani</h4><p>Slow-cooked black lentils in butter and cream</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Egg Roast</h4><p>Kerala-style fried eggs in spiced onion-tomato masala</p></div><span class="tag tag-nv">Non-Veg</span></div>
+    </div>
+    <!-- Breads -->
+    <div class="m-panel" id="tab-breads">
+      <div class="m-item"><div><h4>Malabar Parotta</h4><p>Signature flaky multi-layered wheat parotta</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Pathiri</h4><p>Thin rice flour pancake — a Malabar classic</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Naan (Butter / Garlic)</h4><p>Tandoor-baked leavened bread with butter or garlic</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Chapati / Phulka</h4><p>Whole wheat soft rotis cooked on tawa</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Puri</h4><p>Deep-fried whole wheat bread, light and fluffy</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Kal Dosa</h4><p>Thick, soft dosa cooked on stone griddle</p></div><span class="tag tag-v">Veg</span></div>
+    </div>
+    <!-- Snacks -->
+    <div class="m-panel" id="tab-snacks">
+      <div class="m-item"><div><h4>Chicken Cutlet</h4><p>Spiced minced chicken patties, crispy fried</p></div><span class="tag tag-nv">Non-Veg</span></div>
+      <div class="m-item"><div><h4>Kozhikode Fish Fry</h4><p>Marinated king fish slices fried to perfection</p></div><span class="tag tag-nv">Non-Veg</span></div>
+      <div class="m-item"><div><h4>Prawn Fry</h4><p>Masala-coated tiger prawns, crispy shallow fried</p></div><span class="tag tag-nv">Non-Veg</span></div>
+      <div class="m-item"><div><h4>Pazham Pori</h4><p>Golden banana fritters — Kerala's beloved tea snack</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Unniyappam</h4><p>Mini rice &amp; jaggery dumplings fried in kuzhi</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Veg Puffs &amp; Samosa</h4><p>Crispy pastry parcels with spiced vegetable filling</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Chicken Spring Roll</h4><p>Crispy rolls with shredded chicken and vegetables</p></div><span class="tag tag-nv">Non-Veg</span></div>
+      <div class="m-item"><div><h4>Sulaimani Tea</h4><p>Refreshing Malabar black tea with lemon &amp; spices</p></div><span class="tag tag-v">Veg</span></div>
+    </div>
+    <!-- Sweets -->
+    <div class="m-panel" id="tab-sweets">
+      <div class="m-item"><div><h4>Ada Pradhaman</h4><p>Rice flakes in jaggery, coconut milk &amp; cardamom</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Palada Payasam</h4><p>Creamy milk-based ada pudding with saffron</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Semiya Payasam</h4><p>Vermicelli in sweetened milk with cashews &amp; raisins</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Kozhikodan Halwa</h4><p>Iconic black wheat halwa — the pride of Kozhikode</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Neyyappam</h4><p>Ghee-fried rice jaggery cakes — a Kerala festival treat</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Gulab Jamun</h4><p>Soft milk-solid dumplings in rose-flavored sugar syrup</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Semiya Kheer</h4><p>Rich vermicelli pudding with dry fruits &amp; cardamom</p></div><span class="tag tag-v">Veg</span></div>
+      <div class="m-item"><div><h4>Ice Cream Counter</h4><p>Assorted flavors — vanilla, strawberry, mango, butterscotch</p></div><span class="tag tag-v">Veg</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-row">
+    <div class="stat rv"><div class="stat-n" data-count="5000">0</div><div class="stat-l">Events Catered</div></div>
+    <div class="stat rv d1"><div class="stat-n" data-count="15">0</div><div class="stat-l">Years of Experience</div></div>
+    <div class="stat rv d2"><div class="stat-n" data-count="50">0</div><div class="stat-l">Expert Chefs &amp; Staff</div></div>
+    <div class="stat rv d3"><div class="stat-n" data-count="100">0</div><div class="stat-l">% Client Satisfaction</div></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="section">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <p class="eyebrow rv">Gallery</p>
+      <div class="gold-line rv d1" style="margin:0 auto 1.5rem;"></div>
+      <h2 class="sec-title rv d2">A Feast for the Eyes</h2>
+    </div>
+    <div class="gal-grid rv">
+      <div class="gal-item"><canvas data-g="biryani"></canvas><div class="gal-cap"><span>Malabar Biryani Spread</span></div></div>
+      <div class="gal-item"><canvas data-g="sadya"></canvas><div class="gal-cap"><span>Traditional Sadya Setup</span></div></div>
+      <div class="gal-item"><canvas data-g="counter"></canvas><div class="gal-cap"><span>Live Biryani Counter</span></div></div>
+      <div class="gal-item"><canvas data-g="wedding"></canvas><div class="gal-cap"><span>Grand Wedding Feast</span></div></div>
+      <div class="gal-item"><canvas data-g="sweets"></canvas><div class="gal-cap"><span>Dessert Station</span></div></div>
+      <div class="gal-item"><canvas data-g="snacks"></canvas><div class="gal-cap"><span>Snack Counters</span></div></div>
+      <div class="gal-item"><canvas data-g="corp"></canvas><div class="gal-cap"><span>Corporate Event</span></div></div>
+      <div class="gal-item"><canvas data-g="payasam"></canvas><div class="gal-cap"><span>Payasam Varieties</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location" class="section">
+  <div class="wrap">
+    <div class="loc-grid">
+      <div>
+        <p class="eyebrow rv">Find Us</p>
+        <div class="gold-line rv d1"></div>
+        <h2 class="sec-title rv d2">Visit Our Kitchen</h2>
+        <p style="color:var(--cream-dim);margin-bottom:2.5rem;" class="rv d3">Our central kitchen is in the heart of Kozhikode. Visit us or reach out to discuss your event requirements in detail.</p>
+        <div class="loc-detail rv d1">
+          <div class="loc-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+          <div><strong>Address</strong><p>Krishna Caters, Near Paragon Restaurant,<br>SM Street, Kozhikode – 673 001, Kerala</p></div>
+        </div>
+        <div class="loc-detail rv d2">
+          <div class="loc-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg></div>
+          <div><strong>Phone</strong><p><a href="tel:+919876543210">+91 98765 43210</a><br><a href="tel:+919876543211" style="color:var(--cream-dim)">+91 98765 43211</a></p></div>
+        </div>
+        <div class="loc-detail rv d3">
+          <div class="loc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div><strong>Working Hours</strong><p>Monday – Sunday: 8:00 AM – 10:00 PM<br>Event Bookings: 24/7 via WhatsApp</p></div>
+        </div>
+        <div class="loc-detail rv d4">
+          <div class="loc-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><strong>Email</strong><p><a href="mailto:info@krishnacaters.in">info@krishnacaters.in</a></p></div>
+        </div>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;" class="rv d3">
+          <a href="tel:+919876543210" class="btn btn-call">Call Now</a>
+          <a href="https://wa.me/919876543210?text=Hi%20Krishna%20Caters%2C%20I%20would%20like%20to%20enquire%20about%20catering%20for%20my%20event." class="btn btn-wa" target="_blank">WhatsApp Us</a>
+        </div>
+      </div>
+      <div class="rv d2">
+        <div class="map-wrap">
+          <div class="map-badge">Krishna Caters · Kozhikode</div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3914.4341803498295!2d75.77444387469699!3d11.258433888941648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba65938563d4747%3A0x323333b80a6b2e19!2sSM%20Street%2C%20Kozhikode%2C%20Kerala%20673001!5e0!3m2!1sen!2sin!4v1718000000000!5m2!1sen!2sin"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Krishna Caters Location">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <canvas id="cta-canvas"></canvas>
+  <div class="wrap cta-inner">
+    <p class="eyebrow rv" style="text-align:center;">Ready to Book?</p>
+    <h2 class="cta-title rv d1">Let's Make Your<br><em>Event Unforgettable</em></h2>
+    <p class="cta-sub rv d2">Reach out now for a free consultation, customized menu, and competitive pricing. We respond within 30 minutes.</p>
+    <div class="cta-btns rv d3">
+      <a href="tel:+919876543210" class="btn btn-call btn-lg">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Call +91 98765 43210
+      </a>
+      <a href="https://wa.me/919876543210?text=Hi%20Krishna%20Caters%2C%20I%20would%20like%20to%20book%20catering%20for%20my%20event." class="btn btn-wa btn-lg" target="_blank">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Enquiry
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      Krishna Caters
+      <small>Kozhikode, Kerala · Est. 2008</small>
+    </div>
+    <nav class="foot-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#location">Location</a>
+    </nav>
+    <p class="foot-copy">© 2024 Krishna Caters. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<div class="floats">
+  <a href="https://wa.me/919876543210?text=Hi%20Krishna%20Caters%2C%20I%20would%20like%20to%20enquire%20about%20catering." class="fl fl-wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <div class="fl-tip">Chat on WhatsApp</div>
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <a href="tel:+919876543210" class="fl fl-call" aria-label="Call">
+    <div class="fl-tip">Call Now</div>
+    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+  </a>
+</div>
+
+<script>
+// ── NAV ──
+const nav = document.getElementById('nav');
+const ham = document.getElementById('nav-ham');
+const links = document.getElementById('nav-links');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50), {passive:true});
+ham.addEventListener('click', () => links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+// ── HERO CANVAS ──
+(function(){
+  const cv = document.getElementById('hero-canvas');
+  const ctx = cv.getContext('2d');
+  let W, H, shapes = [];
+
+  function resize(){
+    W = cv.width = cv.offsetWidth;
+    H = cv.height = cv.offsetHeight;
+  }
+
+  function makeShape(){
+    return {
+      x: Math.random()*W, y: Math.random()*H,
+      r: 30 + Math.random()*90,
+      vx: (Math.random()-0.5)*0.25,
+      vy: (Math.random()-0.5)*0.25,
+      rot: Math.random()*Math.PI*2,
+      vr: (Math.random()-0.5)*0.003,
+      sides: Math.random()>0.5 ? 6 : 8,
+      a: 0.025 + Math.random()*0.055
+    };
+  }
+
+  function poly(cx,cy,r,n,rot){
+    ctx.beginPath();
+    for(let i=0;i<=n;i++){
+      const a=(i/n)*Math.PI*2+rot;
+      i===0 ? ctx.moveTo(cx+r*Math.cos(a),cy+r*Math.sin(a))
+             : ctx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a));
+    }
+    ctx.closePath();
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const bg = ctx.createRadialGradient(W*.5,H*.38,0,W*.5,H*.5,W*.85);
+    bg.addColorStop(0,'#1c1106'); bg.addColorStop(1,'#0D0A07');
+    ctx.fillStyle = bg; ctx.fillRect(0,0,W,H);
+
+    // faint grid
+    ctx.strokeStyle='rgba(196,151,63,0.035)'; ctx.lineWidth=1;
+    for(let x=0;x<W;x+=70){ ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke(); }
+    for(let y=0;y<H;y+=70){ ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke(); }
+
+    shapes.forEach(s=>{
+      s.x+=s.vx; s.y+=s.vy; s.rot+=s.vr;
+      if(s.x<-s.r*2) s.x=W+s.r; if(s.x>W+s.r*2) s.x=-s.r;
+      if(s.y<-s.r*2) s.y=H+s.r; if(s.y>H+s.r*2) s.y=-s.r;
+      ctx.strokeStyle=`rgba(232,148,58,${s.a})`; ctx.lineWidth=1;
+      poly(s.x,s.y,s.r,s.sides,s.rot); ctx.stroke();
+      poly(s.x,s.y,s.r*0.55,s.sides,s.rot+Math.PI/s.sides); ctx.stroke();
+    });
+
+    const glow=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,W*.5);
+    glow.addColorStop(0,'rgba(232,148,58,0.06)'); glow.addColorStop(1,'rgba(232,148,58,0)');
+    ctx.fillStyle=glow; ctx.fillRect(0,0,W,H);
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  shapes = Array.from({length:18}, makeShape);
+  window.addEventListener('resize', ()=>{ resize(); shapes=Array.from({length:18},makeShape); });
+  draw();
+})();
+
+// ── CTA CANVAS ──
+(function(){
+  const cv = document.getElementById('cta-canvas');
+  const ctx = cv.getContext('2d');
+  function draw(){
+    const W = cv.width = cv.offsetWidth;
+    const H = cv.height = cv.offsetHeight;
+    ctx.clearRect(0,0,W,H);
+    for(let i=0;i<24;i++){
+      const a=(i/24)*Math.PI*2;
+      ctx.strokeStyle='rgba(232,148,58,0.18)'; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.moveTo(W/2,H/2);
+      ctx.lineTo(W/2+Math.cos(a)*W,H/2+Math.sin(a)*H); ctx.stroke();
+    }
+    for(let r=60;r<Math.max(W,H);r+=90){
+      ctx.strokeStyle='rgba(196,151,63,0.1)'; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.arc(W/2,H/2,r,0,Math.PI*2); ctx.stroke();
+    }
+  }
+  draw(); window.addEventListener('resize',draw);
+})();
+
+// ── ABOUT CANVASES ──
+function drawSadya(cv){
+  const ctx=cv.getContext('2d'), W=cv.width=cv.offsetWidth, H=cv.height=cv.offsetHeight;
+  ctx.fillStyle='#0e1a0b'; ctx.fillRect(0,0,W,H);
+  // leaf
+  ctx.fillStyle='#1e4a14'; ctx.beginPath();
+  ctx.ellipse(W*.5,H*.52,W*.44,H*.4,-0.05,0,Math.PI*2); ctx.fill();
+  ctx.strokeStyle='#2a6a1e'; ctx.lineWidth=2;
+  ctx.beginPath(); ctx.moveTo(W*.08,H*.52); ctx.lineTo(W*.92,H*.52); ctx.stroke();
+  // side veins
+  for(let i=0;i<5;i++){
+    const t=0.2+i*0.15;
+    ctx.strokeStyle='rgba(42,106,30,0.5)'; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(W*t,H*.52); ctx.lineTo(W*(t-0.08),H*.28); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(W*t,H*.52); ctx.lineTo(W*(t-0.08),H*.76); ctx.stroke();
+  }
+  // curry bowls
+  [[.22,.34,'#c4973f'],[.5,.34,'#7a3010'],[.78,.34,'#3a7a2e'],[.33,.62,'#e8943a'],[.67,.62,'#8b2020']].forEach(([x,y,c])=>{
+    ctx.fillStyle=c; ctx.beginPath(); ctx.arc(W*x,H*y,W*.07,0,Math.PI*2); ctx.fill();
+    ctx.strokeStyle='rgba(255,255,255,0.08)'; ctx.lineWidth=1; ctx.stroke();
+  });
+  // rice
+  ctx.fillStyle='#f0e6c0'; ctx.beginPath(); ctx.ellipse(W*.5,H*.53,W*.1,H*.08,0,0,Math.PI*2); ctx.fill();
+  const ov=ctx.createLinearGradient(0,0,0,H); ov.addColorStop(0,'rgba(14,26,11,0.15)'); ov.addColorStop(1,'rgba(14,26,11,0.55)');
+  ctx.fillStyle=ov; ctx.fillRect(0,0,W,H);
+}
+
+function drawBiryani(cv){
+  const ctx=cv.getContext('2d'), W=cv.width=cv.offsetWidth, H=cv.height=cv.offsetHeight;
+  ctx.fillStyle='#1a0f05'; ctx.fillRect(0,0,W,H);
+  // bowl rim
+  ctx.fillStyle='#2a1a08'; ctx.beginPath(); ctx.ellipse(W*.5,H*.6,W*.4,H*.35,0,0,Math.PI*2); ctx.fill();
+  // rice gradient
+  const rg=ctx.createRadialGradient(W*.5,H*.42,0,W*.5,H*.48,W*.35);
+  rg.addColorStop(0,'#f5e6b0'); rg.addColorStop(0.55,'#c9a86c'); rg.addColorStop(1,'#8b6a30');
+  ctx.fillStyle=rg; ctx.beginPath(); ctx.ellipse(W*.5,H*.45,W*.34,H*.3,0,0,Math.PI*2); ctx.fill();
+  // chicken pieces
+  [[.35,.42],[.62,.38],[.5,.32]].forEach(([x,y])=>{
+    ctx.fillStyle='#8b3a1e'; ctx.beginPath();
+    ctx.ellipse(W*x,H*y,W*.07,H*.05,0.4,0,Math.PI*2); ctx.fill();
+  });
+  // fried onions
+  ctx.fillStyle='#c47a2e';
+  for(let i=0;i<8;i++){
+    const a=(i/8)*Math.PI*2;
+    ctx.beginPath(); ctx.ellipse(W*.5+Math.cos(a)*W*.2,H*.45+Math.sin(a)*H*.15,W*.035,H*.022,a,0,Math.PI*2); ctx.fill();
+  }
+  // herbs
+  ctx.fillStyle='#4a8a2a';
+  for(let i=0;i<5;i++){ ctx.beginPath(); ctx.arc(W*(.35+i*.07),H*.36,W*.012,0,Math.PI*2); ctx.fill(); }
+  const ov=ctx.createLinearGradient(0,0,0,H); ov.addColorStop(0,'rgba(26,15,5,0.1)'); ov.addColorStop(1,'rgba(26,15,5,0.5)');
+  ctx.fillStyle=ov; ctx.fillRect(0,0,W,H);
+}
+
+// Gallery canvas painter
+const galPalettes = {
+  biryani: ['#1a0f05','#6b4020','#c4973f','#f5e6b0'],
+  sadya:   ['#0d1a0a','#1e4a14','#4a8a3c','#a8d46f'],
+  counter: ['#150a05','#7a3010','#c4973f','#e8943a'],
+  wedding: ['#0c0810','#3a1a55','#8b5fc0','#d4b0f0'],
+  sweets:  ['#120a0a','#7a2010','#c47a2e','#f5c842'],
+  snacks:  ['#0a0d12','#152035','#2e5a8a','#6ab0d0'],
+  corp:    ['#08090e','#121a28','#1e3555','#4a7a9b'],
+  payasam: ['#120a05','#7a4010','#c4973f','#f5e0a0'],
+};
+
+function drawGallery(cv, key){
+  const ctx=cv.getContext('2d'), W=cv.width=cv.offsetWidth, H=cv.height=cv.offsetHeight;
+  const p=galPalettes[key]||galPalettes.biryani;
+  const bg=ctx.createLinearGradient(0,0,W,H);
+  bg.addColorStop(0,p[0]); bg.addColorStop(1,p[1]);
+  ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
+  // blobs
+  for(let i=0;i<5;i++){
+    const x=W*(0.1+i*.2), y=H*.5+Math.sin(i*1.3)*H*.25, r=W*.18+Math.sin(i*.8)*W*.06;
+    const g=ctx.createRadialGradient(x,y,0,x,y,r);
+    g.addColorStop(0,p[2]+'99'); g.addColorStop(1,p[1]+'00');
+    ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fill();
+  }
+  // accent dots
+  for(let i=0;i<4;i++){
+    const x=W*(0.15+Math.sin(i*2.1)*.35+.35), y=H*(0.2+Math.cos(i*1.7)*.3+.3);
+    ctx.fillStyle=p[3]+'70'; ctx.beginPath(); ctx.arc(x,y,W*.025,0,Math.PI*2); ctx.fill();
+  }
+  // grain texture via noise-like strokes
+  ctx.strokeStyle='rgba(255,255,255,0.015)'; ctx.lineWidth=1;
+  for(let i=0;i<30;i++){
+    ctx.beginPath(); ctx.moveTo(Math.sin(i*7.3)*W+W*.5,i*(H/30));
+    ctx.lineTo(Math.sin(i*7.3+1)*W+W*.5,i*(H/30)+H*.04); ctx.stroke();
+  }
+  const vign=ctx.createRadialGradient(W/2,H/2,W*.1,W/2,H/2,W*.7);
+  vign.addColorStop(0,'rgba(0,0,0,0)'); vign.addColorStop(1,'rgba(0,0,0,0.55)');
+  ctx.fillStyle=vign; ctx.fillRect(0,0,W,H);
+}
+
+function initCanvases(){
+  const sa=document.getElementById('cv-sadya'), bi=document.getElementById('cv-biryani');
+  if(sa){ sa.width=sa.offsetWidth; sa.height=sa.offsetHeight; drawSadya(sa); }
+  if(bi){ bi.width=bi.offsetWidth; bi.height=bi.offsetHeight; drawBiryani(bi); }
+  document.querySelectorAll('[data-g]').forEach(cv=>{
+    cv.width=cv.offsetWidth; cv.height=cv.offsetHeight;
+    drawGallery(cv, cv.dataset.g);
+  });
+}
+window.addEventListener('load', initCanvases);
+window.addEventListener('resize', ()=> setTimeout(initCanvases, 100));
+
+// ── TABS ──
+document.querySelectorAll('.m-tab').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.m-tab').forEach(b=>b.classList.remove('on'));
+    document.querySelectorAll('.m-panel').forEach(p=>p.classList.remove('on'));
+    btn.classList.add('on');
+    document.getElementById('tab-'+btn.dataset.tab).classList.add('on');
+  });
+});
+
+// ── REVEAL ──
+const revObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+},{threshold:0.08, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>revObs.observe(el));
+
+// ── COUNT UP ──
+const cntObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting || e.target.dataset.done) return;
+    e.target.dataset.done='1';
+    const target=+e.target.dataset.count, dur=1600, start=performance.now();
+    const suffix = target===100 ? '%' : '+';
+    (function tick(now){
+      const t=Math.min((now-start)/dur,1), ease=1-Math.pow(1-t,3);
+      e.target.textContent=Math.round(ease*target).toLocaleString()+suffix;
+      if(t<1) requestAnimationFrame(tick);
+    })(start);
+  });
+},{threshold:0.5});
+document.querySelectorAll('[data-count]').forEach(el=>cntObs.observe(el));
+</script>
